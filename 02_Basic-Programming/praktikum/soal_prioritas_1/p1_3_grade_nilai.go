@@ -1,10 +1,19 @@
-package gradenilai
+// soal nomor 3
+// Buatlah sebuah program untuk menentukan grade dari sebuah nilai, dengan ketentuan sebagai berikut:
+// Nilai 80 - 100: A
+// Nilai 65 - 79: B
+// Nilai 50 - 64: C
+// Nilai 35 - 49: D
+// Nilai 0 - 34: E
+// Nilai kurang dari 0 atau lebih dari 100 maka tampilkan 'Nilai Invalid'
+
+package main
 
 import (
 	"fmt"
 )
 
-func gradenilai() {
+func main() {
 	var nilai int
 
 	fmt.Print("Masukkan nilai: ")

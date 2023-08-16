@@ -1,8 +1,11 @@
-package ganjilgenap
+// soal nomor 2
+// Buatlah sebuah program untuk menentukan apakah sebuah bilang adalah bilang ganjil atau genap.
+
+package main
 
 import "fmt"
 
-func ganjilgenap() {
+func main() {
 	var bil int
 
 	fmt.Print("Masukkan bilangan yang anda kehendaki: ")

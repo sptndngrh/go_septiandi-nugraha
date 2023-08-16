@@ -1,8 +1,11 @@
-package hitungluas
+// soal nomor 1
+// Buatlah sebuah program untuk menghitung luas trapesium.
+
+package main
 
 import "fmt"
 
-func hitungluas() {
+func main() {
 	var p1, p2, t1 float64
 
 	fmt.Print("      Program hitung luas trapesium      \n     masukkan satuan dalam satuan cm      \n")
