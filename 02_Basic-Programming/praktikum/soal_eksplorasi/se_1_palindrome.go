@@ -5,20 +5,27 @@ package main
 
 import (
 	"fmt"
+	"bufio"
+	"os"
 	"strings"
 )
 
 
 func main() {
-	fmt.Print("Program pengecekan kata Palindrom \n")
-	var kata string
-	fmt.Print("masukkan sebuah kata: ")
-	fmt.Scan(&kata)
+	fmt.Println("Apakah Palindrome?")
+	fmt.Print("Masukkan kata: ")
+
+	// Membuat objek Scanner untuk membaca seluruh baris input
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Scan()
+	kata := scanner.Text()
 
 	if palindrome(kata) {
-		fmt.Printf("%s merupakan palindrome.\n", kata)
+		fmt.Print("Captured: ", kata)
+		fmt.Printf("\nPalindrome")
 	} else {
-		fmt.Printf("%s tidak termasuk palindrome.\n", kata)
+		fmt.Print("Captured: ", kata)
+		fmt.Printf("\nBukan merupakan palindrome")
 	}
 }
 
