@@ -1,3 +1,6 @@
+// Nama: Septiandi Nugraha
+// Asal Kampus: Institut Teknologi Telkom Purwokerto
+
 // soal nomor 1
 // Buatlah sebuah program untuk mencetak segitiga asterik seperti dibawah ini!
 

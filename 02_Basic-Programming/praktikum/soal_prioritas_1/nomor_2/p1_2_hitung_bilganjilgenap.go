@@ -1,3 +1,6 @@
+// Nama: Septiandi Nugraha
+// Asal Kampus: Institut Teknologi Telkom Purwokerto
+
 // soal nomor 2
 // Buatlah sebuah program untuk menentukan apakah sebuah bilang adalah bilang ganjil atau genap.
 

@@ -1,3 +1,6 @@
+// Nama: Septiandi Nugraha
+// Asal Kampus: Institut Teknologi Telkom Purwokerto
+
 // soal nomor 3
 // Buatlah sebuah program untuk menentukan grade dari sebuah nilai, dengan ketentuan sebagai berikut:
 // Nilai 80 - 100: A

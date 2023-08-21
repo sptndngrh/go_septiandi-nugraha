@@ -1,3 +1,6 @@
+// Nama: Septiandi Nugraha
+// Asal Kampus: Institut Teknologi Telkom Purwokerto
+
 // soal nomor 2
 // Buatlah sebuah program untuk mencetak faktor bilangan dari sebuah angka, seperti dibawah ini!
 
