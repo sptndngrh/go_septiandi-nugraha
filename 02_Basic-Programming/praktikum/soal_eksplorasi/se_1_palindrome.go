@@ -1,3 +1,6 @@
+// Nama: Septiandi Nugraha
+// Asal Kampus: Institut Teknologi Telkom Purwokerto
+
 // soal nomor 1
 // Buatlah sebuah program untuk memeriksa apakah sebuah kata adalah palindrome atau bukan, serta coba terapkan scanner untuk menangkap inputan dari console, seperti dibawah ini!
 
