@@ -1,3 +1,6 @@
+// Nama: Septiandi Nugraha
+// Asal Kampus: Institut Teknologi Telkom Purwokerto
+
 // soal nomor 4
 // Buatlah sebuah program yang mencetak angka dari 1 sampai 100 
 // dan untuk kelipatan '3' cetak "Fizz" sebagai ganti angka, dan untuk 
