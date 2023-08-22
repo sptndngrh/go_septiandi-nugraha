@@ -28,4 +28,12 @@ func main() {
 
 	result := pow (x, n)
 	fmt.Printf("Output: %d\n", result)
+
+	fmt.Println("===========================")
+	fmt.Println("Sample case test") 
+	fmt.Println(pow(2, 3)) // 8
+	fmt.Println(pow(5, 3)) // 125
+	fmt.Println(pow(10, 2)) // 100
+	fmt.Println(pow(2, 5)) // 32
+	fmt.Println(pow(7, 3)) // 343
 }
