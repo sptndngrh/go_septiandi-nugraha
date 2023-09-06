@@ -44,7 +44,7 @@ func fetchProducts(url string, wg *sync.WaitGroup, ch chan<- Product) {
 
 func main() {
 	url := "https://fakestoreapi.com/products"
-	numWorkers := 5
+	numWorkers := 1
 
 	var wg sync.WaitGroup
 	wg.Add(numWorkers)
