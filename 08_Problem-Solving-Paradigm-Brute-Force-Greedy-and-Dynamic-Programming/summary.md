@@ -1,7 +1,0 @@
-# Materi Problem Solving Paradigm Brute Force Greedy and Dynamic Programming
-
-> Brute Force, Greedy, dan Dynamic Programming: Tiga paradigma pemecahan masalah ini adalah pendekatan yang berbeda dalam menyelesaikan permasalahan. Brute force melibatkan mencoba semua kemungkinan solusi, greedy berfokus pada memilih langkah terbaik di setiap langkah, dan dynamic programming melibatkan penyimpanan solusi untuk submasalah yang lebih kecil. Setiap paradigma memiliki kekuatan dan kelemahan masing-masing dan dipilih tergantung pada sifat masalah yang dihadapi.
-
-> Representasi Angka dalam Berbagai Sistem: Soal-soal yang melibatkan representasi angka dalam sistem biner (1. Prioritas 1), angka Fibonacci (2. Prioritas 1), atau angka Romawi (Soal Eksplorasi) menunjukkan pentingnya pemahaman tentang cara angka direpresentasikan dalam sistem yang berbeda. Ini mengilustrasikan bagaimana komputer menggunakan biner, bagaimana pola angka Fibonacci muncul, dan cara mengonversi angka dalam sistem Romawi.
-
-> Optimisasi Algoritma: Soal-soal seperti masalah "Frog" (2. Prioritas 2) menekankan pada pengoptimalan algoritma. Dalam kasus ini, mencari biaya total minimum yang mungkin dikeluarkan memerlukan pemikiran tentang bagaimana untuk melompati batu-batu secara efisien dengan biaya minimum. Ini menunjukkan pentingnya mengidentifikasi pola atau aturan tertentu yang dapat digunakan untuk mengoptimalkan solusi algoritma.

@@ -1,7 +1,0 @@
-# Materi Basic Programming
-
-> Go adalah bahasa pemrograman yang bersifat umum (general-purpose) yang dirancang untuk memudahkan pembangunan perangkat lunak yang sederhana, handal, dan efisien. Go memiliki tujuan untuk menggabungkan kelebihan dari bahasa pemrograman kompilasi dengan tipe statis (seperti C) dan bahasa pemrograman dinamis (seperti JavaScript), serta memberikan nuansa pengembangan yang ringan seperti bahasa skrip.
-
-> Paket "fmt" adalah bagian dari library standar di Go yang digunakan untuk melakukan formatting input dan output. Ini berguna untuk mencetak teks ke konsol atau membaca masukan dari pengguna. Di Go, variabel harus dideklarasikan sebelum digunakan. Tipe data variabel harus ditentukan, dan setiap variabel memiliki "zero value" yaitu nilai default jika tidak diinisialisasi secara eksplisit.
-
-> Go mendukung berbagai operator aritmatika seperti penjumlahan, pengurangan, perkalian, dan pembagian, yang digunakan untuk operasi matematika dasar. Selain itu, Go juga memiliki struktur kontrol seperti pernyataan percabangan (if-else) untuk pengambilan keputusan berdasarkan kondisi tertentu, serta perulangan (looping) seperti for dan while untuk menjalankan blok kode berulang kali selama kondisi tertentu terpenuhi.

@@ -1,7 +1,0 @@
-# Materi Concurrent Programming (eksplorasi)
-
-> Concurrency di Go (Golang): Go adalah bahasa pemrograman yang kuat dalam pemrograman konkuren. Go menyediakan goroutine sebagai cara untuk menjalankan tugas secara independen, menghemat memori dan overhead. Ini memungkinkan eksekusi banyak tugas secara bersamaan, dengan saling berbagi memori yang aman melalui mekanisme sinkronisasi seperti mutex atau channel.
-
-> Channel dan Select: Channel adalah struktur data dalam Go yang memungkinkan komunikasi antara goroutine dan koordinasi yang aman. Select adalah konstruksi kontrol yang digunakan untuk memilih operasi channel yang siap dieksekusi, memungkinkan eksekusi non-blok dan menghindari blok goroutine saat menunggu operasi channel tertentu. Kombinasi channel dan select sangat berguna dalam mengelola komunikasi antar goroutine.
-
-> Mengatasi Race Condition dan Data Race: Race condition adalah situasi di mana hasil program bergantung pada urutan eksekusi operasi konkuren. Data race adalah varian dari race condition yang terjadi ketika dua atau lebih goroutine mengakses dan memodifikasi data bersamaan tanpa sinkronisasi. Untuk mengatasi data race dalam Go, Anda harus menggunakan mekanisme sinkronisasi seperti mutex, channel, atau operasi atomik, serta melakukan tes dan review kode secara cermat untuk memastikan program berjalan dengan benar dalam lingkungan konkuren.
