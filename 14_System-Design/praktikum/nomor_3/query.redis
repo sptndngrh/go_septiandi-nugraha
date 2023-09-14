@@ -1,0 +1,11 @@
+# Contoh berkas redis
+
+# Data Contoh (pengguna)
+SET user:1 "John"
+SET user:2 "Alice"
+SET user:3 "Bob"
+
+# Ambil data dari pengguna
+GET user:1
+GET user:2
+GET user:3
