@@ -66,7 +66,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"userId\": 1,\r\n        \"title\": \"sunt aut facere repellat provident occaecati excepturi optio reprehenderit\",\r\n        \"body\": \"quia et suscipit\\nsuscipit recusandae consequuntur expedita et cum\\nreprehenderit molestiae ut ut quas totam\\nnostrum rerum est autem sunt rem eveniet architecto\"\r\n    }",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -149,7 +149,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"client_id\": 1234,\r\n    \"client_key\": \"CLIENT01\",\r\n    \"client_secret\": \"SECRET01\",\r\n    \"status\": true\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -181,7 +181,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"client_id\": 1234,\r\n    \"client_key\": \"CLIENT01\",\r\n    \"client_secret\": \"SECRET01\",\r\n    \"status\": true\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -209,6 +209,17 @@
 		},
 		{
 			"name": "Skenario2_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [],
