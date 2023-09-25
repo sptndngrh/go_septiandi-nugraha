@@ -1,0 +1,404 @@
+{
+	"info": {
+		"_postman_id": "2691f730-6f73-488f-a63f-dab7af9d408c",
+		"name": "18_Middleware",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21659944"
+	},
+	"item": [
+		{
+			"name": "Endpoint User",
+			"item": [
+				{
+					"name": "getalluser",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTU2MTY0ODMsIm5hbWUiOiJNdWhhbW1hZCBGYW5kaWEiLCJ1c2VySWQiOjF9.6ODOj8EelAw1S_9o1uqW5YXZXSXAL0mdRU9TpYGwYcY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getuserbyID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTU2MTY0ODMsIm5hbWUiOiJNdWhhbW1hZCBGYW5kaWEiLCJ1c2VySWQiOjF9.6ODOj8EelAw1S_9o1uqW5YXZXSXAL0mdRU9TpYGwYcY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addnewuser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTU2MTY0ODMsIm5hbWUiOiJNdWhhbW1hZCBGYW5kaWEiLCJ1c2VySWQiOjF9.6ODOj8EelAw1S_9o1uqW5YXZXSXAL0mdRU9TpYGwYcY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Muhammad FFandia\",\r\n    \"email\": \"muhfandioo87.com\",\r\n    \"password\": \"karatemewing\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateuser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTU2MTY0ODMsIm5hbWUiOiJNdWhhbW1hZCBGYW5kaWEiLCJ1c2VySWQiOjF9.6ODOj8EelAw1S_9o1uqW5YXZXSXAL0mdRU9TpYGwYcY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Muhammad Fandia\",\r\n    \"email\": \"muhfandioo87.com\",\r\n    \"password\": \"karatemewing\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteuser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTU2MTY0ODMsIm5hbWUiOiJNdWhhbW1hZCBGYW5kaWEiLCJ1c2VySWQiOjF9.6ODOj8EelAw1S_9o1uqW5YXZXSXAL0mdRU9TpYGwYcY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/users/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTU2MTY0ODMsIm5hbWUiOiJNdWhhbW1hZCBGYW5kaWEiLCJ1c2VySWQiOjF9.6ODOj8EelAw1S_9o1uqW5YXZXSXAL0mdRU9TpYGwYcY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Muhammad FFandia\",\r\n    \"email\": \"muhfandioo87.com\",\r\n    \"password\": \"karatemewing\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Endpoint Buku",
+			"item": [
+				{
+					"name": "getallbook",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTU2MTY0ODMsIm5hbWUiOiJNdWhhbW1hZCBGYW5kaWEiLCJ1c2VySWQiOjF9.6ODOj8EelAw1S_9o1uqW5YXZXSXAL0mdRU9TpYGwYcY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getbookbyID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTU2MTY0ODMsIm5hbWUiOiJNdWhhbW1hZCBGYW5kaWEiLCJ1c2VySWQiOjF9.6ODOj8EelAw1S_9o1uqW5YXZXSXAL0mdRU9TpYGwYcY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/books/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"books",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addnewbook",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTU2MTY0ODMsIm5hbWUiOiJNdWhhbW1hZCBGYW5kaWEiLCJ1c2VySWQiOjF9.6ODOj8EelAw1S_9o1uqW5YXZXSXAL0mdRU9TpYGwYcY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"Manfaat mengerjakan tugas di jam 3 pagi\",\r\n    \"author\" : \"Alexandria Mahandika\",\r\n    \"publisher\" : \"Lottrus Book Media\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatebook",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTU2MTY0ODMsIm5hbWUiOiJNdWhhbW1hZCBGYW5kaWEiLCJ1c2VySWQiOjF9.6ODOj8EelAw1S_9o1uqW5YXZXSXAL0mdRU9TpYGwYcY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"Kekuatan budaya modernisasi\",\r\n    \"author\" : \"Xiao Mai Hog\",\r\n    \"publisher\" : \"Cirebon Industry Book Center\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/books/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"books",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletebook",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTU2MTY0ODMsIm5hbWUiOiJNdWhhbW1hZCBGYW5kaWEiLCJ1c2VySWQiOjF9.6ODOj8EelAw1S_9o1uqW5YXZXSXAL0mdRU9TpYGwYcY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/books/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"books",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
