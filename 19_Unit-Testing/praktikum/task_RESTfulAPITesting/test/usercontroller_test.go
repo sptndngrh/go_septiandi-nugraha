@@ -6,6 +6,7 @@ import (
 	"go_septiandi-nugraha/19_Unit-Testing/praktikum/task_RESTfulAPITesting/config"
 	"go_septiandi-nugraha/19_Unit-Testing/praktikum/task_RESTfulAPITesting/controllers"
 	"go_septiandi-nugraha/19_Unit-Testing/praktikum/task_RESTfulAPITesting/models"
+	"go_septiandi-nugraha/19_Unit-Testing/praktikum/task_RESTfulAPITesting/repo"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -15,24 +16,32 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func CheckTestUserExist() bool {
+func CheckTestUserExist() *echo.Echo {
 	config.InitDBTest()
 	e := echo.New()
 	return e
 }
 
-func InsertDataUserForUserController() error {
-	user := models.User{
-		Name:     "Septiandi Nugraha",
-		Password: "mamud92",
-		Email:    "septiandin92@gmail.com",
-	}
-
-	var err error
-	if err = config.DB.Create(&user).Error; err != nil {
-		return err
+func InsertDataUserForUserController(urepo *repo.UserRepository) error {
+	exist := urepo.CheckTestUserExist()
+	if exist {
+		user := models.User{
+			Name:     "Septiandi Nugraha",
+			Password: "mamud92",
+			Email:    "septiandin92@gmail.com",
+		}
+		err := urepo.InsertUser(&user)
+		if err != nil {
+			return err
+		}
 	}
 	return nil
+}
+
+	err := repo.InsertUser(user)
+	if err != nil {
+		return err
+	}
 }
 
 // ------ Unit Test --------
@@ -51,7 +60,7 @@ func TestGetUsersController(t *testing.T) {
 		},
 	}
 
-	e := InitEchoTestAPI()
+	e := CheckTestUserExist()
 	InsertDataUserForUserController()
 	req := httptest.NewRequest(http.MethodGet, "/", nil)
 	rec := httptest.NewRecorder()
@@ -60,7 +69,7 @@ func TestGetUsersController(t *testing.T) {
 	for _, testCase := range testCases {
 		c.SetPath(testCase.path)
 
-		if assert.NoError(t, controllers.GetUserController(c)) {
+		if assert.NoError(t, controllers.GetUsersController(c)) {
 			assert.Equal(t, testCase.expectedCode, rec.Code)
 			body := rec.Body.String()
 
@@ -102,7 +111,7 @@ func TestGetUserController(t *testing.T) {
 		{
 			name:         "Get User with non-existing ID",
 			path:         "/users",
-			id:           "mamud92",
+			id:           "100",
 			expectedCode: http.StatusNotFound,
 		},
 	}
