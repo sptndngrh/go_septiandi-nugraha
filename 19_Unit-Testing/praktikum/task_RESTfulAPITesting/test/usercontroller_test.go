@@ -28,8 +28,8 @@ func InsertDataUserForUserController() error {
 		Email:    "septiandin92@gmail.com",
 	}
 
-	err := ur.InsertUser(user)
-	if err != nil {
+	var err error
+	if err = config.DB.Create(&user).Error; err != nil {
 		return err
 	}
 	return nil
@@ -51,35 +51,32 @@ func TestGetUsersController(t *testing.T) {
 		},
 	}
 
-	e, db := utils.InitEchoTestAPI()
-	userRepo := repositories.NewUserRepository(db)
-	userController := controllers.CreateUserController(*userRepo)
-
-	err := InsertDataUserForUserController(userRepo)
-	assert.Equal(t, nil, err)
+	e := InitEchoTestAPI()
+	InsertDataUserForUserController()
+	req := httptest.NewRequest(http.MethodGet, "/", nil)
+	rec := httptest.NewRecorder()
+	c := e.NewContext(req, rec)
 
 	for _, testCase := range testCases {
-		t.Run(testCase.name, func(t *testing.T) {
-			// Create a request with the specific user ID
-			req := httptest.NewRequest(http.MethodGet, testCase.path, nil)
-			rec := httptest.NewRecorder()
-			c := e.NewContext(req, rec)
+		c.SetPath(testCase.path)
 
-			if assert.NoError(t, userController.GetUsersController(c)) {
-				body := rec.Body.String()
-				var response UserResponse
+		if assert.NoError(t, controllers.GetUserController(c)) {
+			assert.Equal(t, testCase.expectedCode, rec.Code)
+			body := rec.Body.String()
 
-				assert.Equal(t, testCase.expectedCode, rec.Code, body)
-
-				err := json.Unmarshal([]byte(body), &response)
-
-				if err != nil {
-					assert.Error(t, err, "Error")
-				}
-
-				assert.Equal(t, testCase.sizeData, len(response.Data))
+			type Response struct {
+				Message string                 `json:"message"`
+				Data    []models.UsersResponse `json:"data"`
 			}
-		})
+
+			var response Response
+			err := json.Unmarshal([]byte(body), &response)
+
+			if err != nil {
+				assert.Error(t, err, "Error")
+			}
+			assert.Equal(t, testCase.sizeData, len(response.Data))
+		}
 	}
 }
 
