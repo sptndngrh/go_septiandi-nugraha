@@ -3,24 +3,22 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	"go_septiandi-nugraha/19_Unit-Testing/praktikum/task_RESTfulAPITesting/controllers"
 	"go_septiandi-nugraha/19_Unit-Testing/praktikum/task_RESTfulAPITesting/config"
+	"go_septiandi-nugraha/19_Unit-Testing/praktikum/task_RESTfulAPITesting/controllers"
 	"go_septiandi-nugraha/19_Unit-Testing/praktikum/task_RESTfulAPITesting/models"
 	"net/http"
 	"net/http/httptest"
 	"strings"
 	"testing"
 
+	"github.com/labstack/echo/v4"
 	"github.com/stretchr/testify/assert"
 )
 
 func CheckTestUserExist() bool {
-	tx := config.DB.First(&models.User{}).Where("name = ?", "alta")
-	if tx.Error != nil {
-		return false
-	}
-
-	return true
+	config.InitDBTest()
+	e := echo.New()
+	return e
 }
 
 func InsertDataUserForUserController(ur *repositories.UserRepository) error {
@@ -137,7 +135,7 @@ func TestGetUserController(t *testing.T) {
 			c.SetParamNames("id")
 			c.SetParamValues(testCase.id)
 
-			if assert.NoError(t, user controllers.CreateUserControllers(c)) {
+			if assert.NoError(t, user, controllers.CreateUserControllers(c)) {
 				body := rec.Body.String()
 				assert.Equal(t, testCase.expectedCode, rec.Code, body)
 			}
