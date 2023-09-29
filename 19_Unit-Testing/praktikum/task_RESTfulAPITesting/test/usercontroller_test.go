@@ -21,24 +21,17 @@ func CheckTestUserExist() bool {
 	return e
 }
 
-func InsertDataUserForUserController(ur *repositories.UserRepository) error {
-
-	// check if user exist
-	exist := CheckTestUserExist()
-
-	if !exist {
-		user := models.User{
-			Name:     "Septiandi Nugraha",
-			Password: "mamud92",
-			Email:    "septiandin92@gmail.com",
-		}
-
-		err := ur.InsertUser(user)
-		if err != nil {
-			return err
-		}
+func InsertDataUserForUserController() error {
+	user := models.User{
+		Name:     "Septiandi Nugraha",
+		Password: "mamud92",
+		Email:    "septiandin92@gmail.com",
 	}
 
+	err := ur.InsertUser(user)
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
