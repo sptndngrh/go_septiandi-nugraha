@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"errors"
 	"go_septiandi-nugraha/19_Unit-Testing/praktikum/task_RESTfulAPITesting/config"
 	"go_septiandi-nugraha/19_Unit-Testing/praktikum/task_RESTfulAPITesting/middleware"
 	"go_septiandi-nugraha/19_Unit-Testing/praktikum/task_RESTfulAPITesting/models"
@@ -9,7 +8,6 @@ import (
 	"strconv"
 
 	"github.com/labstack/echo/v4"
-	"gorm.io/gorm"
 )
 
 // get all users
@@ -35,10 +33,9 @@ func GetUserController(c echo.Context) error {
 
 	var user models.User
 	if err := config.DB.First(&user, Id).Error; err != nil {
-		if errors.Is(err, gorm.ErrRecordNotFound) {
-			return echo.NewHTTPError(http.StatusNotFound, "User Not Found")
-		}
-		return echo.NewHTTPError(http.StatusInternalServerError, "Database error")
+
+		return echo.NewHTTPError(http.StatusBadRequest, "User Not Found")
+
 	}
 
 	return c.JSON(http.StatusOK, map[string]interface{}{
@@ -84,7 +81,7 @@ func LoginUserController(c echo.Context) error {
 		})
 	}
 
-	response := models.UsersResponse{
+	UsersResponse := models.UsersResponse{
 		UserID: user.ID,
 		Name:   user.Name,
 		Email:  user.Email,
@@ -93,7 +90,7 @@ func LoginUserController(c echo.Context) error {
 
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"message": "success login",
-		"user":    response,
+		"user":    UsersResponse,
 	})
 }
 

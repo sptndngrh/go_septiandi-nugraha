@@ -1,8 +1,8 @@
 package route
 
 import (
-	"go_septiandi-nugraha/19_Unit-Testing/praktikum/task_RESTfulAPITesting/controllers"
-	m "go_septiandi-nugraha/19_Unit-Testing/praktikum/task_RESTfulAPITesting/middleware"
+	"go_septiandi-nugraha/18_Middleware/praktikum/task/controllers"
+	m "go_septiandi-nugraha/18_Middleware/praktikum/task/middleware"
 
 	"github.com/labstack/echo/v4"
 )

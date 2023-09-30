@@ -13,6 +13,7 @@ type UsersResponse struct {
 	UserID uint   `json:"id"`
 	Name   string `json:"name"`
 	Email  string `json:"email"`
+	Token  string `json:"token"`
 }
 
 func (u *User) TableName() string {
