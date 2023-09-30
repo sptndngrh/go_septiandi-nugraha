@@ -71,9 +71,9 @@ func LoginUserController(c echo.Context) error {
 		})
 	}
 
-	userID := int(user.ID)
+	userID := uint(user.ID)
 
-	token, err := middleware.CreateToken(userID, user.Name)
+	token, err := middleware.CreateToken(userID)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]interface{}{
 			"message": "Fail login",
@@ -91,29 +91,6 @@ func LoginUserController(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"message": "success login",
 		"user":    UsersResponse,
-	})
-}
-
-// delete user by id
-func DeleteUserController(c echo.Context) error {
-	IdStr := c.Param("id")
-	Id, err := strconv.Atoi(IdStr)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, "Invalid user ID")
-	}
-
-	var user models.User
-	if err := config.DB.First(&user, Id).Error; err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, "User Not Found")
-	}
-
-	if err := config.DB.Delete(&user).Error; err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
-	}
-
-	return c.JSON(http.StatusOK, map[string]interface{}{
-		"message": "success delete user",
-		"user":    user,
 	})
 }
 
@@ -146,5 +123,28 @@ func UpdateUserController(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"message": "success update user",
 		"user":    existingUser,
+	})
+}
+
+// delete user by id
+func DeleteUserController(c echo.Context) error {
+	IdStr := c.Param("id")
+	Id, err := strconv.Atoi(IdStr)
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, "Invalid user ID")
+	}
+
+	var user models.User
+	if err := config.DB.First(&user, Id).Error; err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, "User Not Found")
+	}
+
+	if err := config.DB.Delete(&user).Error; err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+	}
+
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"message": "success delete user",
+		"user":    user,
 	})
 }

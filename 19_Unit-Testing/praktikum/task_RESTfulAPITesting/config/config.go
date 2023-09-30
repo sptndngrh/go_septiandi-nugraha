@@ -31,7 +31,7 @@ func InitDB() {
 		DB_Password: "",
 		DB_Port:     "3306",
 		DB_Host:     "localhost",
-		DB_Name:     "crud_go",
+		DB_Name:     "crud_go_test",
 	}
 
 	connectionString := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local",

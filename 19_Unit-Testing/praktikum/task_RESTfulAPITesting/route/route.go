@@ -1,15 +1,12 @@
 package route
 
 import (
-	"go_septiandi-nugraha/18_Middleware/praktikum/task/controllers"
-	m "go_septiandi-nugraha/18_Middleware/praktikum/task/middleware"
+	"go_septiandi-nugraha/19_Unit-Testing/praktikum/task_RESTfulAPITesting/controllers"
 
 	"github.com/labstack/echo/v4"
 )
 
-func SetupRoutes() *echo.Echo {
-	e := echo.New()
-	m.LogMiddleware(e)
+func SetupRoutes(e *echo.Echo) {
 
 	UserProtect := e.Group("/users")
 
@@ -20,13 +17,11 @@ func SetupRoutes() *echo.Echo {
 	e.POST("/users", controllers.CreateUserController)
 	e.POST("/users/login", controllers.LoginUserController)
 
-	BooksProtect := e.Group("/books", m.JWTMiddleware())
+	BooksProtect := e.Group("/books")
 
 	BooksProtect.GET("", controllers.GetAllBooksController)
 	BooksProtect.GET("/:id", controllers.GetBookController)
 	BooksProtect.PUT("/:id", controllers.UpdateBookController)
 	BooksProtect.DELETE("/:id", controllers.DeleteBookController)
 	BooksProtect.POST("", controllers.CreateBookController)
-
-	return e
 }
