@@ -11,6 +11,11 @@ import (
 
 // GetAllBooksController mengembalikan semua data buku
 func GetAllBooksController(c echo.Context) error {
+	tableName := c.Param("table")
+	if tableName != "valid_table" {
+		return echo.NewHTTPError(http.StatusBadRequest, "Invalid table name")
+	}
+
 	var books []models.Book
 	if err := config.DB.Find(&books).Error; err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
@@ -44,7 +49,7 @@ func GetBookController(c echo.Context) error {
 func CreateBookController(c echo.Context) error {
 	book := new(models.Book)
 	if err := c.Bind(book); err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+		return err
 	}
 
 	if err := config.DB.Create(book).Error; err != nil {
