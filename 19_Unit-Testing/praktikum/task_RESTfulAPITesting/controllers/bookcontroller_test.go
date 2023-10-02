@@ -1,7 +1,6 @@
-package test
+package controllers
 
 import (
-	"go_septiandi-nugraha/19_Unit-Testing/praktikum/task_RESTfulAPITesting/controllers"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -18,7 +17,7 @@ func TestGetAllBooksController(t *testing.T) {
 		rec := httptest.NewRecorder()
 		c := e.NewContext(req, rec)
 
-		if assert.Error(t, controllers.GetAllBooksController(c)) {
+		if assert.Error(t, GetAllBooksController(c)) {
 			assert.Equal(t, http.StatusOK, rec.Code)
 		}
 	})
@@ -38,10 +37,9 @@ func TestCreateBookController(t *testing.T) {
 		rec := httptest.NewRecorder()
 		c := e.NewContext(req, rec)
 
-
 		req.Header.Set("Authorization", "InputValid")
 
-		if assert.NoError(t, controllers.CreateBookController(c)) {
+		if assert.NoError(t, CreateBookController(c)) {
 			assert.Equal(t, http.StatusOK, rec.Code)
 		}
 	})
@@ -58,7 +56,7 @@ func TestGetBookController(t *testing.T) {
 
 		req.Header.Set("Authorization", "InvalidToken")
 
-		if assert.NoError(t, controllers.GetBookController(c)) {
+		if assert.NoError(t, GetBookController(c)) {
 			assert.Equal(t, http.StatusOK, rec.Code)
 		}
 	})
@@ -69,7 +67,7 @@ func TestGetBookController(t *testing.T) {
 		c.SetParamNames("id")
 		c.SetParamValues("2")
 
-		if assert.NoError(t, controllers.GetBookController(c)) {
+		if assert.NoError(t, GetBookController(c)) {
 			assert.Equal(t, http.StatusOK, rec.Code)
 		}
 	})
@@ -93,7 +91,7 @@ func TestUpdateBookController(t *testing.T) {
 
 		req.Header.Set("Authorization", "InvalidToken")
 
-		if assert.NoError(t, controllers.UpdateBookController(c)) {
+		if assert.NoError(t, UpdateBookController(c)) {
 			assert.Equal(t, http.StatusOK, rec.Code)
 		}
 	})
@@ -112,7 +110,7 @@ func TestUpdateBookController(t *testing.T) {
 		c.SetParamNames("id")
 		c.SetParamValues("2")
 
-		if assert.NoError(t, controllers.UpdateBookController(c)) {
+		if assert.NoError(t, UpdateBookController(c)) {
 			assert.Equal(t, http.StatusOK, rec.Code)
 		}
 	})
@@ -129,7 +127,7 @@ func TestDeleteBookController(t *testing.T) {
 
 		req.Header.Set("Authorization", "InvalidToken")
 
-		if assert.NoError(t, controllers.DeleteBookController(c)) {
+		if assert.NoError(t, DeleteBookController(c)) {
 			assert.Equal(t, http.StatusOK, rec.Code)
 		}
 	})
@@ -140,7 +138,7 @@ func TestDeleteBookController(t *testing.T) {
 		c.SetParamNames("id")
 		c.SetParamValues("4")
 
-		if assert.NoError(t, controllers.DeleteBookController(c)) {
+		if assert.NoError(t, DeleteBookController(c)) {
 			assert.Equal(t, http.StatusOK, rec.Code)
 		}
 	})

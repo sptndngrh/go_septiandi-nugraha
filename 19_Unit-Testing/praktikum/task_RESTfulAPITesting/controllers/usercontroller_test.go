@@ -1,11 +1,10 @@
-package test
+package controllers
 
 import (
 	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
-	"go_septiandi-nugraha/19_Unit-Testing/praktikum/task_RESTfulAPITesting/controllers"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -36,7 +35,7 @@ func generateAuthToken() (string, error) {
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 
-	if err := controllers.LoginUserController(c); err != nil {
+	if err := LoginUserController(c); err != nil {
 		return "", err
 	}
 
@@ -70,7 +69,7 @@ func TestCreateUserController(t *testing.T) {
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 
-	if assert.NoError(t, controllers.CreateUserController(c)) {
+	if assert.NoError(t, CreateUserController(c)) {
 		assert.Equal(t, http.StatusOK, rec.Code)
 	}
 }
@@ -86,7 +85,7 @@ func TestLoginUserController(t *testing.T) {
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 
-	if assert.NoError(t, controllers.LoginUserController(c)) {
+	if assert.NoError(t, LoginUserController(c)) {
 		assert.Equal(t, http.StatusOK, rec.Code)
 	}
 }
@@ -98,7 +97,7 @@ func TestGetUsersController(t *testing.T) {
 	rec1 := httptest.NewRecorder()
 	c1 := e.NewContext(req1, rec1)
 
-	err1 := controllers.GetUsersController(c1)
+	err1 := GetUsersController(c1)
 
 	if assert.NoError(t, err1) {
 		assert.Equal(t, http.StatusOK, rec1.Code)
@@ -110,7 +109,7 @@ func TestGetUsersController(t *testing.T) {
 	rec2 := httptest.NewRecorder()
 	c2 := e.NewContext(req2, rec2)
 
-	err2 := controllers.GetUsersController(c2)
+	err2 := GetUsersController(c2)
 
 	if assert.NoError(t, err2) {
 		assert.Equal(t, http.StatusOK, rec2.Code)
@@ -120,7 +119,7 @@ func TestGetUsersController(t *testing.T) {
 	rec3 := httptest.NewRecorder()
 	c3 := e.NewContext(req3, rec3)
 
-	err3 := controllers.GetUsersController(c3)
+	err3 := GetUsersController(c3)
 
 	if assert.NoError(t, err3) {
 		assert.Equal(t, http.StatusOK, rec3.Code)
@@ -138,7 +137,7 @@ func TestGetUserController(t *testing.T) {
 
 		req.Header.Set("Authorization", "InvalidToken")
 
-		if assert.NoError(t, controllers.GetUserController(c)) {
+		if assert.NoError(t, GetUserController(c)) {
 			assert.Equal(t, http.StatusOK, rec.Code)
 		}
 	})
@@ -149,7 +148,7 @@ func TestGetUserController(t *testing.T) {
 		c.SetParamNames("id")
 		c.SetParamValues("1")
 
-		if assert.NoError(t, controllers.GetUserController(c)) {
+		if assert.NoError(t, GetUserController(c)) {
 			assert.Equal(t, http.StatusOK, rec.Code)
 		}
 	})
@@ -173,7 +172,7 @@ func TestUpdateUserController(t *testing.T) {
 
 		req.Header.Set("Authorization", "InvalidToken")
 
-		if assert.NoError(t, controllers.UpdateUserController(c)) {
+		if assert.NoError(t, UpdateUserController(c)) {
 			assert.Equal(t, http.StatusOK, rec.Code)
 		}
 	})
@@ -191,7 +190,7 @@ func TestUpdateUserController(t *testing.T) {
 		c.SetParamNames("id")
 		c.SetParamValues("1")
 
-		if assert.NoError(t, controllers.UpdateUserController(c)) {
+		if assert.NoError(t, UpdateUserController(c)) {
 			assert.Equal(t, http.StatusOK, rec.Code)
 		}
 	})
@@ -208,20 +207,19 @@ func TestDeleteUserController(t *testing.T) {
 
 		req.Header.Set("Authorization", "InvalidToken")
 
-		if assert.NoError(t, controllers.DeleteUserController(c)) {
+		if assert.NoError(t, DeleteUserController(c)) {
 			assert.Equal(t, http.StatusOK, rec.Code)
 		}
 	})
 	t.Run("NoToken", func(t *testing.T) {
-		req := httptest.NewRequest(http.MethodDelete, "/users/3", nil)
+		req := httptest.NewRequest(http.MethodDelete, "/users/4", nil)
 		rec := httptest.NewRecorder()
 		c := e.NewContext(req, rec)
 		c.SetParamNames("id")
-		c.SetParamValues("3")
+		c.SetParamValues("4")
 
-		if assert.NoError(t, controllers.DeleteUserController(c)) {
+		if assert.NoError(t, DeleteUserController(c)) {
 			assert.Equal(t, http.StatusOK, rec.Code)
 		}
 	})
 }
-
