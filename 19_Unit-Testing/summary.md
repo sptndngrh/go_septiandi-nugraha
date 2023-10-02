@@ -1,5 +1,3 @@
-Anda memberikan definisi yang bagus tentang software testing dan juga menguraikan mengapa kita harus melakukan testing. Berikut beberapa poin penting yang dapat diambil dari informasi yang Anda berikan:
-
 1. **Tujuan Software Testing:** Tujuan utama dari software testing adalah untuk memastikan bahwa sistem atau perangkat lunak berfungsi dengan baik, sesuai dengan kebutuhan dan harapan dari stakeholder, serta tidak mengalami bug atau kerusakan yang dapat mengganggu pengguna.
 
 2. **Alasan Melakukan Testing:**
@@ -26,5 +24,3 @@ Anda memberikan definisi yang bagus tentang software testing dan juga menguraika
 10. **Langkah-Langkah Sederhana untuk Pengujian:** Anda memberikan langkah-langkah sederhana untuk melakukan pengujian, mulai dari pembuatan file pengujian hingga menjalankan pengujian dan melihat laporan cakupan.
 
 11. **Perbedaan Antara Test Scenario dan Test Case:** Anda membedakan antara test scenario, yang adalah gambaran umum tentang apa yang akan diuji, dan test case, yang merupakan langkah-langkah uji yang meliputi pre-conditions, steps, expected result, status, actual result, dan lain-lain.
-
-Ringkasnya, informasi yang Anda berikan memberikan pemahaman yang baik tentang konsep dasar dan praktik-praktik terkait software testing.
