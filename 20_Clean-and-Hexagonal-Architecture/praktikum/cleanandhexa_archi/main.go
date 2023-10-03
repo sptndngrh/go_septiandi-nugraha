@@ -2,7 +2,7 @@ package main
 
 import (
 	"cleanandhexa_archi/config"
-	"cleanandhexa_archi/controller"
+	routes "cleanandhexa_archi/route"
 
 	"github.com/labstack/echo/v4"
 )
@@ -19,7 +19,6 @@ func main() {
 	}
 
 	app := echo.New()
-	app.GET("/users", controller.GetAllUsers(db))
-	app.POST("/users", controller.CreateUser(db))
+	routes.NewRoute(app, db)
 	app.Start(":8080")
 }
