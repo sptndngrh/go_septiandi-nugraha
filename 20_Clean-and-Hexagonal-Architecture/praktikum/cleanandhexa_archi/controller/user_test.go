@@ -27,7 +27,7 @@ func (s *suiteUsers) SetupSuite() {
 	}
 }
 
-func (s suiteUsers) TestGetAllUsers() {
+func (s *suiteUsers) TestGetAllUsers() {
 	s.mock.On("Find").Return([]model.User{
 		{
 			Email:    "admin@gmail.com",
@@ -69,7 +69,7 @@ func (s suiteUsers) TestGetAllUsers() {
 	}
 }
 
-func (s suiteUsers) TestGetUser_NotFound() {
+func (s *suiteUsers) TestGetUser_NotFound() {
 	userID := "nonexistent"
 	s.mock.On("FindByID", userID).Return(nil, errors.New("User not found"))
 
@@ -86,7 +86,7 @@ func (s suiteUsers) TestGetUser_NotFound() {
 	s.Equal(http.StatusNotFound, w.Result().StatusCode)
 }
 
-func (s suiteUsers) TestCreateUser() {
+func (s *suiteUsers) TestCreateUser() {
 	mockUser := model.User{
 		Email:    "",
 		Password: "",
@@ -127,7 +127,7 @@ func (s suiteUsers) TestCreateUser() {
 	}
 }
 
-func (s suiteUsers) TestCreateUser_InvalidInput() {
+func (s *suiteUsers) TestCreateUser_InvalidInput() {
 	invalidUser := model.User{
 		Email:    "",
 		Password: "password123",
