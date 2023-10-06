@@ -3,4 +3,5 @@ go 1.21.0
 use (
 	.
 	./20_Clean-and-Hexagonal-Architecture/praktikum/cleanandhexa_archi
+	./21_Docker/praktikum
 )
