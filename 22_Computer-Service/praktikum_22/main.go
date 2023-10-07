@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"praktikum/app/config"
-	"praktikum/app/database"
-	"praktikum/app/migration"
-	routes "praktikum/route"
+	"praktikum_22/app/config"
+	"praktikum_22/app/database"
+	"praktikum_22/app/migration"
+	routes "praktikum_22/route"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"

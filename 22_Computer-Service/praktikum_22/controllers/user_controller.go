@@ -2,9 +2,9 @@ package controllers
 
 import (
 	"net/http"
-	"praktikum/helpers"
-	"praktikum/repositories"
-	"praktikum/responses"
+	"praktikum_22/helpers"
+	"praktikum_22/repositories"
+	"praktikum_22/responses"
 
 	"github.com/labstack/echo/v4"
 )

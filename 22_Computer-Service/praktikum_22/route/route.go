@@ -1,8 +1,8 @@
 package routes
 
 import (
-	"praktikum/controllers"
-	"praktikum/repositories"
+	"praktikum_22/controllers"
+	"praktikum_22/repositories"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"

@@ -1,7 +1,7 @@
 package migration
 
 import (
-	"praktikum/models"
+	"praktikum_22/models"
 
 	"gorm.io/gorm"
 )
