@@ -19,7 +19,7 @@ func NewUserRepo(db *gorm.DB) *userRepo {
 	return &userRepo{db}
 }
 
-func (u *userRepo) Create(user model.User) error{
+func (u *userRepo) Create(user model.User) error {
 	return u.db.Save(&user).Error
 }
 
