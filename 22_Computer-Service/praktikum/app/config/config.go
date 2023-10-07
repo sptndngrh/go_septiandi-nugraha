@@ -32,7 +32,7 @@ func InitConfig() *AppConfig {
 func loadConfig() *AppConfig {
 	var res = new(AppConfig)
 
-	err := godotenv.Load(".env.db")
+	err := godotenv.Load(".env")
 
 	if err != nil {
 		logrus.Error("Config : Cannot load config file,", err.Error())
