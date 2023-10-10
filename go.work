@@ -5,4 +5,5 @@ use (
 	./20_Clean-and-Hexagonal-Architecture/praktikum/cleanandhexa_archi
 	./21_Docker/praktikum
 	./22_Computer-Service/praktikum_22
+	./23_CI_CD/praktikum
 )
