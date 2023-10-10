@@ -11,8 +11,8 @@ import (
 
 func InitRouter(e *echo.Echo, db *gorm.DB) {
 	// proses pembuatan object dan inject
-	userRepo := repositories.NewUserRepository(db)
-	userController := controllers.NewUserController(*userRepo)
+	UserRepository := repositories.NewUserRepository(db)
+	userController := controllers.NewUserController(*&UserRepository)
 
 	e.Pre(middleware.RemoveTrailingSlash())
 	e.Use(middleware.CORS())
@@ -23,5 +23,6 @@ func InitRouter(e *echo.Echo, db *gorm.DB) {
 	}))
 
 	//endpoint
-	e.GET("/users", userController.GetUserController)
+	e.GET("/users", userController.GetAllUsers)
+	e.POST("/users", userController.CreateUser)
 }

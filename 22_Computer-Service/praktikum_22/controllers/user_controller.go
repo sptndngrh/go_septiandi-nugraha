@@ -1,39 +1,76 @@
 package controllers
 
 import (
+	"fmt"
 	"net/http"
-	"praktikum_22/helpers"
+	"praktikum_22/dto"
+	"praktikum_22/middleware"
+	"praktikum_22/models"
 	"praktikum_22/repositories"
-	"praktikum_22/responses"
 
 	"github.com/labstack/echo/v4"
 )
 
-type UserController struct {
-	repo repositories.UserRepository
+// UserController defines the user controller interface.
+type UserController interface {
+	GetAllUsers(c echo.Context) error
+	CreateUser(c echo.Context) error
 }
 
-func NewUserController(ur repositories.UserRepository) *UserController {
-	return &UserController{
-		repo: ur,
+type userController struct {
+	userRepo repositories.UserRepository
+}
+
+// NewUserController creates a new UserController instance.
+func NewUserController(uRepo repositories.UserRepository) UserController {
+	return &userController{
+		userRepo: uRepo,
 	}
 }
 
-func (uc *UserController) GetUserController(c echo.Context) error {
-	responseData, err := uc.repo.Select()
+// GetAllUsers retrieves all users.
+func (u *userController) GetAllUsers(c echo.Context) error {
+	users, err := u.userRepo.Find()
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, helpers.FailedResponse("error get data"))
+		return c.JSON(http.StatusInternalServerError, echo.Map{
+			"error": err.Error(),
+		})
 	}
+	return c.JSON(http.StatusOK, echo.Map{
+		"data": users,
+	})
+}
 
-	var usersResponse = []responses.UserResponse{}
-	for _, value := range responseData {
-		usersResponse = append(usersResponse, responses.UserResponse{
-			ID:        value.ID,
-			Name:      value.Name,
-			Email:     value.Email,
-			CreatedAt: value.CreatedAt,
+// CreateUser creates a new user.
+func (u *userController) CreateUser(c echo.Context) error {
+	var user models.User
+	err := c.Bind(&user)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, echo.Map{
+			"error": err.Error(),
 		})
 	}
 
-	return c.JSON(http.StatusOK, helpers.SuccessWithDataResponse("Success recieve user data", usersResponse))
+	err = u.userRepo.Create(user)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, echo.Map{
+			"error": fmt.Sprintf("failed to create user: %v", err),
+		})
+	}
+
+	token, err := middleware.CreateToken(user.Email)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, echo.Map{
+			"error": fmt.Sprintf("failed to create token: %v", err),
+		})
+	}
+
+	uRes := dto.DTOUsers{
+		Name:  user.Name,
+		Email: user.Email,
+		Token: token,
+	}
+	return c.JSON(http.StatusOK, echo.Map{
+		"data": uRes,
+	})
 }

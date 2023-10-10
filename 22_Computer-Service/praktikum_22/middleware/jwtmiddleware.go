@@ -5,19 +5,22 @@ import (
 	"time"
 
 	"github.com/golang-jwt/jwt"
-	"golang.org/x/crypto/bcrypt"
+	echojwt "github.com/labstack/echo-jwt"
+	"github.com/labstack/echo/v4"
 )
 
-func CreateToken(userId uint) (string, error) {
+func CreateToken(email string) (string, error) {
 	claims := jwt.MapClaims{}
-	claims["userId"] = userId
-	claims["exp"] = time.Now().Add(time.Hour * 1).Unix()
+	claims["email"] = email
+	claims["exp"] = time.Now().Add(time.Hour * 2).Unix()
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	return token.SignedString([]byte(constants.SECRET_JWT))
 }
 
-func PasswordVerify(storedPassoword, password string) bool {
-	err := bcrypt.CompareHashAndPassword([]byte(storedPassoword), []byte(password))
-	return err == nil
+func JWTMiddleware() echo.MiddlewareFunc {
+	return echojwt.WithConfig(echojwt.Config{
+		SigningKey:    []byte(constants.SECRET_JWT),
+		SigningMethod: "HS256",
+	})
 }

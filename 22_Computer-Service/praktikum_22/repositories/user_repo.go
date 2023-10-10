@@ -6,23 +6,29 @@ import (
 	"gorm.io/gorm"
 )
 
-type UserRepository struct {
+type UserRepository interface {
+	Create(user models.User) error
+	Find() ([]models.User, error)
+}
+
+type userRepository struct {
 	db *gorm.DB
 }
 
-func NewUserRepository(db *gorm.DB) *UserRepository {
-	return &UserRepository{
-		db: db,
-	}
+func NewUserRepository(db *gorm.DB) *userRepository {
+	return &userRepository{db}
 }
 
-func (ur *UserRepository) Select() ([]models.User, error) {
-	//menggunakan db
-	var datausers []models.User
-	// select * from users;
-	tx := ur.db.Order("created_at desc").Find(&datausers)
-	if tx.Error != nil {
-		return nil, tx.Error
+func (u *userRepository) Create(user models.User) error {
+	return u.db.Save(&user).Error
+}
+
+func (u *userRepository) Find() ([]models.User, error) {
+	var users []models.User
+
+	err := u.db.Find(&users).Error
+	if err != nil {
+		return users, err
 	}
-	return datausers, nil
+	return users, nil
 }
